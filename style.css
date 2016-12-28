@@ -1,0 +1,26 @@
+body{
+width: 95%;
+height: 100%;
+background-image: url("https://www.aus-it.com.au/wp-content/uploads/photo-14.jpg"); 
+}
+body img{
+background-size: 100px;
+background-size: contain;
+}
+p{
+font-family: Verdana, sans-serif;
+font-style: normal;
+font-weight: normal;
+font-size: 13px;
+letter-spacing: normal;
+line-height: 19px;
+text-transform: none;
+text-decoration: none;
+text-align: left;
+color: #2d1713;
+font-weight: bold;
+}
+h1{
+	text-align: center;
+	color:#777;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>baza</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="my.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+ </head>
+ <body>
+ <h1>Текст с базы Firebase</h1>
+ <pre id = "object"></pre>
+ <ul id="list"></ul>
+  
+
+
+<script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+<script>
+(function(){
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCL1O075PSx-bKeO9JlMZyMLSFYZvLWqyI",
+    authDomain: "test-baza-sumy.firebaseapp.com",
+    databaseURL: "https://test-baza-sumy.firebaseio.com",
+    storageBucket: "test-baza-sumy.appspot.com",
+    messagingSenderId: "640335583530"
+  };
+  firebase.initializeApp(config);
+
+//__________________________________
+  var preObject = document.getElementById("object");
+  var ulList = document.getElementById("list");
+
+  var dbRefObject = firebase.database().ref().child("object");
+  var dbRefulList = dbRefObject.child("Text");
+// должно выводить в консоль
+  dbRefObject.on("value", snap =>console.log(snap.val()));
+  dbRefulList.on("child_added", snap => {
+  var p = document.createElement("p");
+  p.innerText = snap.val();
+  p.id = snap.key;
+  ulList.appendChild(p);
+});
+
+  dbRefulList.on("child_added", snap =>{
+  var liChanged = document.getElementById(snap.key);
+  pChanged.innerText = snap.val();
+});
+
+  dbRefulList.on("child_remowed", snap =>{
+  const litToRemove = document.getElementById(snap.key);
+  litToRemove.remove()
+});
+}());
+</script>
+ </body>
+</html>
+
